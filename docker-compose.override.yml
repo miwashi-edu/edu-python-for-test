@@ -1,4 +1,4 @@
 networks:
-  iotnet:
+  testnet:
     external: true
     name: iotnet
