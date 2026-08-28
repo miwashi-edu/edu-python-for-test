@@ -1,0 +1,39 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: DockerFile_python
+    container_name: python-server
+    hostname: pyserv
+    volumes:
+      - .:/work
+    ports:
+      - "2222:22"
+    networks:
+      iotnet:
+        ipv4_address: 192.168.2.10
+
+  client:
+    build:
+      context: .
+      dockerfile: DockerFile_python
+    container_name: python-client
+    hostname: pycli
+    volumes:
+      - .:/work
+    ports:
+      - "2223:22"
+    depends_on:
+      - server
+    networks:
+      iotnet:
+        ipv4_address: 192.168.2.11
+
+networks:
+  iotnet:
+    name: iotnet
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.2.0/24
+          gateway: 192.168.2.1
