@@ -1,4 +1,0 @@
-networks:
-  testnet:
-    external: true
-    name: testnet
