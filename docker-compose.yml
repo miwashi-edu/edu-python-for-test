@@ -37,7 +37,7 @@ services:
       testnet:
         ipv4_address: 192.168.2.12
 networks:
-  iotnet:
+  testnet:
     name: testnet
     driver: bridge
     ipam:
