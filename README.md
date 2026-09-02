@@ -1,4 +1,4 @@
-# edu-python-in-docker
+# edu-python-in-test
 
 
 ## Instructions
@@ -7,8 +7,8 @@
 ```
 cd ~
 cd ws
-git clone https://github.com/miwashi-edu/edu-python-in-docker.git
-cd edu-python-in-docker
+git clone https://github.com/miwashi-edu/edu-python-in-test.git
+cd edu-python-in-test
 docker compose up -d
 docker ps
 ```
