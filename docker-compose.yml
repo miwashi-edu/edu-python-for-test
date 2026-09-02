@@ -33,7 +33,7 @@ services:
     container_name: petstore
     hostname: petstore
     ports:
-      - "8081:8080"
+      - "8080:8080"
     networks:
       testnet:
         ipv4_address: 192.168.2.12
