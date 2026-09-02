@@ -1,4 +1,4 @@
-# edu-python-in-test
+# edu-python-for-test
 
 
 ## Instructions
