@@ -12,7 +12,6 @@ services:
     networks:
       testnet:
         ipv4_address: 192.168.2.10
-
   client:
     build:
       context: .
@@ -28,7 +27,15 @@ services:
     networks:
       testnet:
         ipv4_address: 192.168.2.11
-
+  petstore:
+    image: swaggerapi/petstore3:unstable
+    container_name: petstore
+    hostname: petstore
+    ports:
+      - "8080:8080"
+    networks:
+      testnet:
+        ipv4_address: 192.168.2.12
 networks:
   iotnet:
     name: testnet
