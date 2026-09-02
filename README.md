@@ -7,8 +7,8 @@
 ```
 cd ~
 cd ws
-git clone https://github.com/miwashi-edu/edu-python-in-test.git
-cd edu-python-in-test
+git clone https://github.com/miwashi-edu/edu-python-for-test.git
+cd edu-python-for-test
 docker compose up -d
 docker ps
 ```
