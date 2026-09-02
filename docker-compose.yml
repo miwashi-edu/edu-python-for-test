@@ -27,12 +27,13 @@ services:
     networks:
       testnet:
         ipv4_address: 192.168.2.11
-  petstore:
+    petstore:
     image: swaggerapi/petstore3:unstable
+    platform: linux/amd64
     container_name: petstore
     hostname: petstore
     ports:
-      - "8080:8080"
+      - "8081:8080"
     networks:
       testnet:
         ipv4_address: 192.168.2.12
