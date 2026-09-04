@@ -35,6 +35,9 @@ mkdir tests && cd tests
 
 ### Create Scripts
 
+
+#### test_all (script)
+
 ```bash
 cat > test_all << 'EOF'
 #!/usr/bin/env python3
@@ -59,12 +62,22 @@ if __name__ == "__main__":
     runner = unittest.TextTestRunner(verbosity=2)
     runner.run(suite())
 EOF
+```
 
+```bash
+chmod +x test_all
+```
+#### Skapa test modul
+
+```bash
 mkdir -p tests
-
 cat > tests/__init__.py << 'EOF'
 EOF
+```
 
+#### Skapa Pets Test Suite
+
+```bash
 cat > tests/test_pets.py << 'EOF'
 import unittest
 
@@ -77,7 +90,11 @@ class PetTestCase(unittest.TestCase):
     # test_find_pets_by_status
     pass
 EOF
+```
 
+#### Skapa Store Test Suite
+
+```bash
 cat > tests/test_store.py << 'EOF'
 import unittest
 
@@ -86,7 +103,10 @@ class StoreTestCase(unittest.TestCase):
     # test_place_order
     pass
 EOF
+```
+#### Skapa Orders Test Suite
 
+```bash
 cat > tests/test_orders.py << 'EOF'
 import unittest
 
@@ -96,7 +116,11 @@ class OrderTestCase(unittest.TestCase):
     # test_place_order_invalid_id
     pass
 EOF
+```
 
+#### Skapa Inventory Test Suite
+
+```bash
 cat > tests/test_inventory.py << 'EOF'
 import unittest
 
@@ -104,7 +128,11 @@ class InventoryTestCase(unittest.TestCase):
     # test_inventory_status_counts
     pass
 EOF
+```
 
+#### Skapa Users Test Suite
+
+```bash
 cat > tests/test_users.py << 'EOF'
 import unittest
 
@@ -117,10 +145,7 @@ class UserTestCase(unittest.TestCase):
     # test_delete_user
     pass
 EOF
-
-chmod +x test_all
 ```
-
 
 
 ### Generate new signatures if needed
