@@ -3,64 +3,64 @@
 
 ## Instructions
 
-### Prepare
-```
-cd ~
-cd ws
-git clone https://github.com/miwashi-edu/edu-python-for-test.git
-cd edu-python-for-test
-docker compose up -d
-docker ps
-```
-
-### Check IP adreesses
-
-```bash
-docker inspect testnet # read the json produced
-```
-
-
-### Login to Server
-
-```bash
-ssh -p 2222 dev@localhost   # password dev, respond yes if prompted about signature
-```
-
 ### Login to client
 
 ```bash
 ssh -p 2223 dev@localhost   # password dev, respond yes if prompted about signature
 ```
 
-### Rebuilding machines
+### Basic Pet TestCase
 
-```bash
-docker compose up -d --build
+```python
+cat > tests/test_pets.py << 'EOF'
+import unittest
+import requests
+
+class PetTestCase(unittest.TestCase):
+    BASE_URL = "http://192.168.2.12:8080/v2"
+
+    # test_create_pet
+    # test_get_pet_by_id
+    # test_update_pet
+    # test_delete_pet
+    # test_upload_pet_image
+    # test_find_pets_by_status
+    pass
+EOF
 ```
 
-or
+### Hello World Test
 
-```bash
-docker compose build --no-cache
-docker compose up -d
+```python
+def test_should_be_equal_to_itself(self):
+         # Given
+         expected = "Hello World"
+
+         # When
+         actual = "Hello World"
+
+         # Then
+         self.assertEqual(expected,actual)
 ```
 
+### Post (Create) Test
 
-### Generate new signatures if needed
+```python
+# test_create_pet
+     def test_should_be_able_to_create_pet(self):
+         # Given
+         payload = {
+                 "id": 1,
+                 "name": "Rocky",
+                 "category": {"id": 1, "name": "cat"},
+                 "status":"available"
+                 }
 
-> When you see  
-> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
-> @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @  
-> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+         # When
+         response = requests.post(f"{self.BASE_URL}/pet", json=payload)
 
-```bash
-ssh-keygen -R "[localhost]:2222" # Add new key if needed 
-ssh-keygen -R "[localhost]:2223" # Add new key if needed
-cat ~/.ssh/known_hosts # Optional, this is where the keys are stored (can be edited in vim also)
-cat ~/.ssh/known_hosts | grep 2222 # Filter output
-cat ~/.ssh/known_hosts | grep 2223 # Filter output
+         # Then
+         self.assertEqual(200, response.status_code)
+         self.assertEqual(payload["name"], response.json()["name"])
 ```
-
-
-
 
