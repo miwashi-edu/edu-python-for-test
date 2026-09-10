@@ -17,7 +17,7 @@ import unittest
 import requests
 
 class PetTestCase(unittest.TestCase):
-    BASE_URL = "http://192.168.2.12:8080/v2"
+    BASE_URL = "http://192.168.2.12:8080/api/v2"
 
     # test_create_pet
     # test_get_pet_by_id
